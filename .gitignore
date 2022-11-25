@@ -1,0 +1,14 @@
+
+Build/
+
+Intermediates/
+
+.vs/
+
+*.sln
+
+*.vcxproj
+
+*.filters
+
+*.user
