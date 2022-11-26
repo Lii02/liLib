@@ -1,6 +1,7 @@
 #ifndef LILIB_LIST_H
 #define LILIB_LIST_H
 #include "Typedefs.h"
+#include "Hash.h"
 #include <string.h>
 
 namespace liLib {
@@ -93,6 +94,14 @@ namespace liLib {
 		LILIB_INLINE qword GetAllocated() const { return capacity * sizeof(T); }
 		LILIB_INLINE T& operator[](qword index) { return buffer[index]; }
 		LILIB_INLINE const T& operator[](qword index) const { return buffer[index]; }
+	};
+
+	template <typename T>
+	struct liHash<liList<T>> {
+		hash_t operator()(const liList<T>& list) const {
+			byte* buffer = (byte*)&list[0];
+			return HashDJB2(buffer, list.GetSize() * sizeof(T));
+		}
 	};
 }
 

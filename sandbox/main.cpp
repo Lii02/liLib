@@ -7,11 +7,9 @@ using namespace liLib;
 int main(int argc, char** argv) {
 	liMemoryManager::Initialize();
 	liList<int> list;
-	list.Push(23);
-	liList<int> list2 = list;
-	list2.Push(42);
-	list2.Push(69);
-	list2.Push(420);
-	list2.Push(666);
+	for(int i = 0; i < 11; i++)
+		list.Push(i);
+	liHash<liList<int>> hash;
+	printf("%ld\n", hash(list));
 	return 0;
 }
