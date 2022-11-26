@@ -1,7 +1,10 @@
 #ifndef LILIB_TYPEDEFS_H
 #define LILIB_TYPEDEFS_H
 
+#include <stdio.h>
 #include <stddef.h>
+// TODO: Write custom assert
+#include <assert.h>
 
 typedef unsigned char byte;
 typedef unsigned short word;
