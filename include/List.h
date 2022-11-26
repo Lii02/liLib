@@ -107,6 +107,9 @@ namespace liLib {
 		LILIB_INLINE const T& operator[](qword index) const { return buffer[index]; }
 	};
 
+	typedef liList<byte> liByteBuffer;
+	typedef liList<float> liFloatBuffer;
+
 	template <typename T>
 	struct liHash<liList<T>> {
 		hash_t operator()(const liList<T>& list) const {

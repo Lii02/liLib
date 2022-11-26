@@ -10,6 +10,8 @@ typedef unsigned char byte;
 typedef unsigned short word;
 typedef unsigned int dword;
 typedef unsigned long long qword;
+typedef float float32;
+typedef double float64;
 
 #ifdef _MSC_VER
 #define LILIB_INLINE __forceinline
@@ -43,6 +45,12 @@ namespace liLib {
 	typedef unsigned long hash_t;
 	template <typename T>
 	struct liHash { };
+
+	template <typename T>
+	struct liSpan {
+		T* data;
+		qword size;
+	};
 }
 
 #endif
