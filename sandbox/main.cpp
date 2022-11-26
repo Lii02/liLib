@@ -7,9 +7,11 @@ using namespace liLib;
 int main(int argc, char** argv) {
 	liMemoryManager::Initialize();
 	liList<int> list;
-	list.Resize(10);
 	list.Push(23);
-	printf("%d\n", list.Pop());
-	list.OptimizeMemory();
+	liList<int> list2 = list;
+	list2.Push(42);
+	list2.Push(69);
+	list2.Push(420);
+	list2.Push(666);
 	return 0;
 }

@@ -15,6 +15,11 @@ namespace liLib {
 			Initialize(startCapacity);
 		}
 
+		liList(const liList& copy) {
+			buffer = nullptr;
+			*this = copy;
+		}
+
 		~liList() {
 			FreeBuffer();
 		}
@@ -27,8 +32,7 @@ namespace liLib {
 
 		void FreeBuffer() {
 			if (!buffer)
-				return;
-			delete[] buffer;
+				delete[] buffer;
 			this->size = 0;
 			this->capacity = 0;
 		}
@@ -52,7 +56,7 @@ namespace liLib {
 		}
 
 		void Push(const T& val) {
-			if (size < capacity)
+			if (size >= capacity)
 				Resize(capacity *= 2);
 			buffer[size++] = val;
 		}
@@ -69,6 +73,19 @@ namespace liLib {
 			delete[] buffer;
 			this->buffer = newBuffer;
 			this->capacity = size;
+		}
+
+		void Copy(const liList& copy) {
+			FreeBuffer();
+			this->size = copy.size;
+			this->capacity = copy.capacity;
+			this->buffer = new T[capacity];
+			memcpy(buffer, copy.buffer, sizeof(T) * size);
+		}
+
+		liList& operator=(const liList& copy) {
+			Copy(copy);
+			return *this;
 		}
 		
 		LILIB_INLINE qword GetSize() const { return size; }
