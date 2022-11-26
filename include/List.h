@@ -4,6 +4,9 @@
 #include "Hash.h"
 #include <string.h>
 
+#define liStack(T) liLib::liList<T>
+#define liQueue(T) liStack(T)
+
 namespace liLib {
 	template <typename T>
 	class liList {
@@ -62,8 +65,16 @@ namespace liLib {
 			buffer[size++] = val;
 		}
 
-		T Pop() {
+		T PopBack() {
 			return buffer[--size];
+		}
+
+		T PopFront() {
+			T ret = buffer[0];
+			for (qword i = 0; i < size - 1; i++)
+				buffer[i] = buffer[i + 1];
+			size--;
+			return ret;
 		}
 
 		void OptimizeMemory() {
