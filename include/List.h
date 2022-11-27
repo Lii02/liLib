@@ -44,11 +44,11 @@ namespace liLib {
 		void Resize(qword newSize) {
 			if (size == capacity)
 				return;
+			this->capacity = newSize;
 			T* newBuffer = new T[capacity];
 			memcpy(newBuffer, buffer, sizeof(T) * size);
 			delete[] buffer;
 			this->buffer = newBuffer;
-			this->capacity = newSize;
 		}
 
 		bool IsEmpty() const {
@@ -113,8 +113,7 @@ namespace liLib {
 	template <typename T>
 	struct liHash<liList<T>> {
 		hash_t operator()(const liList<T>& list) const {
-			byte* buffer = (byte*)&list[0];
-			return HashDJB2(buffer, list.GetSize() * sizeof(T));
+			return HashDJB2((byte*)&list[0], list.GetSize() * sizeof(T));
 		}
 	};
 }
