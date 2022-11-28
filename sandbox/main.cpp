@@ -8,5 +8,9 @@ using namespace liLib;
 int main(int argc, char** argv) {
 	liMemoryManager::Initialize();
 	liString::PreInitialize();
+	liString str = "Hello world!";
+	str.Append("Test");
+	liHash<liString> hash;
+	printf("%s %d\n", str.CStr(), hash(str));
 	return 0;
 }

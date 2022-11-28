@@ -67,9 +67,14 @@ namespace liLib {
 	void liString::Append(liChar c) {
 		if (size >= capacity)
 			Resize(capacity *= 2);
-		this->size -= 1;
-		buffer[size++] = c;
-		buffer[size] = '\0';
+		buffer[size - 1] = c;
+		buffer[size++] = '\0';
+	}
+
+	void liString::Append(const liChar* str) {
+		qword len = strlen(str);
+		for (qword i = 0; i < len; i++)
+			Append(str[i]);
 	}
 
 	liChar liString::PopBack() {
