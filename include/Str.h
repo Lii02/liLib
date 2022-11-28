@@ -33,6 +33,8 @@ namespace liLib {
 		void Append(const liChar* str);
 		void Append(const liString& str);
 		liChar PopBack();
+		void Insert(qword index, liChar c);
+		void Erase(qword index);
 		void Copy(const liString& copy);
 		liChar* CStr();
 		liString& operator=(const liString& copy);

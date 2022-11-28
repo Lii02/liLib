@@ -89,6 +89,21 @@ namespace liLib {
 		return c;
 	}
 
+	void liString::Insert(qword index, liChar c) {
+		if (size >= capacity)
+			Resize(capacity *= 2);
+		for (qword i = size; i > index; i--)
+			buffer[i] = buffer[i - 1];
+		buffer[index] = c;
+		buffer[++size] = '\0';
+	}
+
+	void liString::Erase(qword index) {
+		for (qword i = index; i < size; i++)
+			buffer[i] = buffer[i + 1];
+		buffer[--size] = '\0';
+	}
+
 	void liString::Copy(const liString& copy) {
 		FreeBuffer();
 		Initialize(copy.capacity + 1);
