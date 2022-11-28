@@ -95,6 +95,25 @@ namespace liLib {
 			memcpy(buffer, copy.buffer, sizeof(T) * size);
 		}
 
+		void Insert(qword index, const T& val) {
+			if (index >= size)
+				return;
+			if (size >= capacity)
+				Resize(capacity *= 2);
+			for (qword i = size; i > index; i--)
+				buffer[i] = buffer[i - 1];
+			buffer[index] = val;
+			size++;
+		}
+
+		void Erase(qword index) {
+			if (index >= size)
+				return;
+			for (qword i = index; i < size - 1; i++)
+				buffer[i] = buffer[i + 1];
+			size--;
+		}
+
 		liList& operator=(const liList& copy) {
 			Copy(copy);
 			return *this;
