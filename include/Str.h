@@ -31,6 +31,7 @@ namespace liLib {
 		void Resize(qword newSize);
 		void Append(liChar c);
 		void Append(const liChar* str);
+		void Append(const liString& str);
 		liChar PopBack();
 		void Copy(const liString& copy);
 		liChar* CStr();

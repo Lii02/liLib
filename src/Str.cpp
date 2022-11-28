@@ -76,6 +76,10 @@ namespace liLib {
 		for (qword i = 0; i < len; i++)
 			Append(str[i]);
 	}
+	
+	void liString::Append(const liString& str) {
+		Append(str.buffer);
+	}
 
 	liChar liString::PopBack() {
 		if (size == 0)

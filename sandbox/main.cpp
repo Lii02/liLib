@@ -10,6 +10,8 @@ int main(int argc, char** argv) {
 	liString::PreInitialize();
 	liString str = "Hello world!";
 	str.Append("Test");
+	liString str2 = "Li";
+	str.Append(str2);
 	liHash<liString> hash;
 	printf("%s %d\n", str.CStr(), hash(str));
 	return 0;
