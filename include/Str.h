@@ -45,7 +45,7 @@ namespace liLib {
 	template <>
 	struct liHash<liString> {
 		hash_t operator()(const liString& str) {
-			return HashDJB2((byte*)&str[0], str.GetAllocated());
+			return HashDJB2((byte*)&str[0], str.GetLength() * sizeof(liChar));
 		}
 	};
 }

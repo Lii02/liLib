@@ -27,7 +27,6 @@ namespace liLib {
 
 	liString::liString(const liString& copy) {
 		this->buffer = nullptr;
-		Initialize();
 		*this = copy;
 	}
 	
@@ -83,7 +82,10 @@ namespace liLib {
 
 	void liString::Copy(const liString& copy) {
 		FreeBuffer();
-
+		Initialize(copy.capacity + 1);
+		copyFunction(buffer, copy.buffer);
+		this->size = copy.size;
+		buffer[size] = '\0';
 	}
 
 	liChar* liString::CStr() {
